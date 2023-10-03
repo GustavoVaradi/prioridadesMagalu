@@ -40,9 +40,9 @@ df_novo = df_novo[(df_novo['Valor Total']>=3000)]
 
 df_novo = df_novo.sort_values(["Valor Total"], ascending=False)
 
-df_novo['Valor Total'] = df_novo['Valor Total'].apply(
-    lambda x: locale.currency(x, grouping=True)
-    )
+#df_novo['Valor Total'] = df_novo['Valor Total'].apply(
+ #   lambda x: locale.currency(x, grouping=True)
+    #)
 
 
 df_novo['Entrega'] = df_novo['Entrega'].astype(str)
