@@ -1,11 +1,10 @@
 # encoding='ISO-8859-1', index_col=False
 
-#import locale
 import pandas as pd
 import streamlit as st
 #import plotly.express as px
 
-#locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+
 
 st.set_page_config(layout="wide")
 #decimal=","
@@ -42,9 +41,7 @@ df_novo = df_novo[(df_novo['Valor Total']>=3000)]
 
 df_novo = df_novo.sort_values(["Valor Total"], ascending=False)
 
-# df_novo['Valor Total'] = df_novo['Valor Total'].apply(
-#     lambda x: locale.currency(x, grouping=True)
-#     )
+
 
 
 df_novo['Entrega'] = df_novo['Entrega'].astype(str)
