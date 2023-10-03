@@ -41,7 +41,7 @@ df_novo = df_novo[(df_novo['Valor Total']>=3000)]
 
 df_novo = df_novo.sort_values(["Valor Total"], ascending=False)
 
-
+df_novo['Valor Total'] = df_novo['Valor Total'].apply(lambda x: f'R${x:,.2f}')
 
 
 df_novo['Entrega'] = df_novo['Entrega'].astype(str)
