@@ -1,14 +1,14 @@
-
 # encoding='ISO-8859-1', index_col=False
 
-#import locale
 import pandas as pd
 import streamlit as st
 #import plotly.express as px
 
+
+
 st.set_page_config(layout="wide")
 #decimal=","
-df = pd.read_csv("prioridades 10h.csv", encoding="ISO-8859-1",
+df = pd.read_csv("prioridades 11h.csv", encoding="ISO-8859-1",
                   index_col=False, sep=";")
 
 df["Nro. Entrega"] = df["Nro. Entrega"].astype(object)
@@ -41,14 +41,13 @@ df_novo = df_novo[(df_novo['Valor Total']>=3000)]
 
 df_novo = df_novo.sort_values(["Valor Total"], ascending=False)
 
-#df_novo['Valor Total'] = df_novo['Valor Total'].apply(
- #   lambda x: locale.currency(x, grouping=True)
-    #)
-
+df_novo['Valor Total'] = df_novo['Valor Total'].apply(lambda x: f'R${x:,.2f}')
 
 df_novo['Entrega'] = df_novo['Entrega'].astype(str)
 
-status = st.sidebar.selectbox("Status", df_novo['Status'].unique())
+tipo_status = ['ENTREGUE', 'EM ROTA']
+#status = st.sidebar.selectbox("Status", df_novo['Status'].unique())
+status = st.sidebar.selectbox("Status", tipo_status)
 unidade = st.sidebar.selectbox("Base", df_novo['Unidade'].unique())
 
 df_novo = df_novo[df_novo['Status']== status]
