@@ -8,7 +8,7 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 #decimal=","
-df = pd.read_csv("prioridades.csv", encoding="ISO-8859-1",
+df = pd.read_csv("Prioridades.csv", encoding="ISO-8859-1",
                   index_col=False, sep=";")
 
 df["Nro. Entrega"] = df["Nro. Entrega"].astype(object)
