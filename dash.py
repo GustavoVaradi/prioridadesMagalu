@@ -1,6 +1,6 @@
 # encoding='ISO-8859-1', index_col=False
 
-import locale
+#import locale
 import pandas as pd
 import streamlit as st
 #import plotly.express as px
