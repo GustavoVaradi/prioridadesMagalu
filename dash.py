@@ -3,7 +3,7 @@
 import locale
 import pandas as pd
 import streamlit as st
-import plotly.express as px
+#import plotly.express as px
 
 locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
