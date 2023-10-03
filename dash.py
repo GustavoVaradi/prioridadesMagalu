@@ -5,7 +5,7 @@ import pandas as pd
 import streamlit as st
 #import plotly.express as px
 
-#locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
 st.set_page_config(layout="wide")
 #decimal=","
