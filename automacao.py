@@ -21,6 +21,7 @@ browser.find_element('xpath', '//*[@id="formLogin"]/button').click()
 # relatorio v2
 
 # romaneio
+# primeiro coloca os numeros de entrega e depois seleciona
 time.sleep(4)
 browser.find_element('xpath', 'form-control input-sm').click()
 romaneio = browser.find_element('xpath', 'option[value=nro_lista]')
