@@ -1,6 +1,5 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-# from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.chrome.service import Service
 import time
@@ -26,8 +25,6 @@ time.sleep(4)
 browser.find_element('xpath', 'form-control input-sm').click()
 romaneio = browser.find_element('xpath', 'option[value=nro_lista]')
 time.sleep(0.5)
-# browser.find_element('xpath', '//*[@id="tipoBusca"]/option[11]').click()
-# time.sleep(0.25)
 select_romaneio = browser.find_element('xpath', 'tipoBusca')
 select = Select(select_romaneio)
 select.select_by_value('nro_lista')
