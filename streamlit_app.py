@@ -38,8 +38,8 @@ data = {'Entrega': df["Nro. Entrega"],
 df_novo = pd.DataFrame(data)
 
 df_novo = df_novo[(df_novo['Valor Total']>=3000)]
-df_novo['Status'] = df_novo['Status'].loc[df_novo['Status'] != ['EM ROTA', ' ENTREGUE'], 'Status'] = 'NÃO ROTEIRIZADO'
-df_novo['Status'].unique()
+# df_novo['Status'] = df_novo['Status'].loc[df_novo['Status'] != ['EM ROTA', ' ENTREGUE'], 'Status'] = 'NÃO ROTEIRIZADO'
+# df_novo['Status'].unique()
 
 df_novo = df_novo.sort_values(["Valor Total"], ascending=False)
 
