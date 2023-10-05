@@ -38,6 +38,8 @@ data = {'Entrega': df["Nro. Entrega"],
 df_novo = pd.DataFrame(data)
 
 df_novo = df_novo[(df_novo['Valor Total']>=3000)]
+df_novo['Status'] = df_novo['Status'].loc[df_novo['Status'] != ['EM ROTA', ' ENTREGUE'], 'Status'] = 'NÃO ROTEIRIZADO'
+df_novo['Status'].unique()
 
 df_novo = df_novo.sort_values(["Valor Total"], ascending=False)
 
@@ -47,6 +49,9 @@ df_novo['Entrega'] = df_novo['Entrega'].astype(str)
 
 status = st.sidebar.selectbox("Status", df_novo['Status'].unique())
 unidade = st.sidebar.selectbox("Base", df_novo['Unidade'].unique())
+
+unidade_filtro = ['GRU', 'VGI', 'ABC', 'OSA']
+status_filtro = ['ENTREGUE', 'EM ROTA', 'NÃO ROTEIRIZADO']
 
 df_novo = df_novo[df_novo['Status']== status]
 df_novo = df_novo[df_novo['Unidade'] == unidade]
