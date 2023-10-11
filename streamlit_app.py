@@ -8,9 +8,9 @@ def transform_string(s):
     return float(changed)
 
 st.set_page_config(layout="wide")
-data_hoje = datetime.day
 
-df = pd.read_csv("prioridades 10.10.csv", index_col=False, sep=",")
+data_hoje = datetime.today().strftime('%d.%m')
+df = pd.read_csv(f"prioridades {data_hoje}.csv", index_col=False, sep=",")
 
 df["Nro. Entrega"] = df["Nro. Entrega"].astype(object)
 df = df.drop_duplicates(subset=['Nro. Entrega'])
