@@ -1,7 +1,10 @@
 import pandas as pd
 import streamlit as st
 from datetime import datetime
+import uniao_romaneios
 #import plotly.express as px
+
+uniao_romaneios()
 
 def transform_string(s):
     changed = s.replace('R$', '').replace('.','').replace(',','.')
@@ -39,8 +42,6 @@ data = {'Entrega': df["Nro. Entrega"],
 df_novo = pd.DataFrame(data)
 
 df_novo = df_novo[(df_novo['Valor Total']>=3000)]
-
-df_novo.to_csv('C:/Users/Varad/Programming/Magalu/arcadeteste/prioridades/prioridades.csv', index=False)
 
 df_novo = df_novo.sort_values(["Valor Total"], ascending=False)
 
