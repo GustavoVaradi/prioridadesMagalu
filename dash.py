@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 from datetime import datetime
-import numpy as np
 #import plotly.express as px
 
 def transform_string(s):
@@ -9,8 +8,8 @@ def transform_string(s):
     return float(changed)
 
 st.set_page_config(layout="wide")
-data_hoje = datetime.today().strftime('%d.%m')
 
+data_hoje = datetime.today().strftime('%d.%m')
 df = pd.read_csv(f"prioridades {data_hoje}.csv", index_col=False, sep=",")
 
 df["Nro. Entrega"] = df["Nro. Entrega"].astype(object)
@@ -41,6 +40,8 @@ df_novo = pd.DataFrame(data)
 
 df_novo = df_novo[(df_novo['Valor Total']>=3000)]
 
+df_novo.to_csv('C:/Users/Varad/Programming/Magalu/arcadeteste/prioridades/prioridades.csv', index=False)
+
 df_novo = df_novo.sort_values(["Valor Total"], ascending=False)
 
 df_novo['Valor Total'] = df_novo['Valor Total'].apply(lambda x: f'R${x:,.2f}')
@@ -59,7 +60,5 @@ df_novo = df_novo[df_novo['Status']== status]
 df_novo = df_novo[df_novo['Unidade'] == unidade]
 df_novo
 
-#filtro de valor maximo
-maximo = np.argmax(df_novo['Valor Total'])
-entrega_max = df_novo.loc[maximo]
-#entrega_max
+
+#adicionar ultimo motorista
