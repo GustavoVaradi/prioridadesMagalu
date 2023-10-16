@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 from datetime import datetime
 #import plotly.express as px
+caminho = 'C:/Users/Varad/Programming/Magalu/arcadeteste/romaneios'
 
 def transform_string(s):
     changed = s.replace('R$', '').replace('.','').replace(',','.')
@@ -10,7 +11,9 @@ def transform_string(s):
 st.set_page_config(layout="wide")
 
 data_hoje = datetime.today().strftime('%d.%m')
-df = pd.read_csv(f"prioridades {data_hoje}.csv", index_col=False, sep=",")
+
+df = pd.read_csv(f'{caminho}/romaneios geral.csv',low_memory=False, sep=',', index_col=False)
+df.head()   
 
 df["Nro. Entrega"] = df["Nro. Entrega"].astype(object)
 df = df.drop_duplicates(subset=['Nro. Entrega'])
@@ -18,7 +21,7 @@ df['Numero End. Pessoa Visita'] = df['Numero End. Pessoa Visita'].astype(object)
 df['Valor Total'] = df['Valor Total'].apply(transform_string)
 endereco = df['Logradouro Pessoa Visita'] + ' - nº ' +df['Numero End. Pessoa Visita'].astype(str)
 
-unidades_atuais = ['GRU', 'VGI', 'ABC', 'OSA']
+unidades_atuais = ['HGRU', 'HVGI', 'HABC', 'OSA']
 df = df[df['Sigla Unidade Atual'].isin(unidades_atuais)]
 
 status_filtro = ['ENTREGUE', 'EM ROTA', 'PENDENTE']
@@ -39,7 +42,9 @@ data = {'Entrega': df["Nro. Entrega"],
 df_novo = pd.DataFrame(data)
 
 df_novo = df_novo[(df_novo['Valor Total']>=3000)]
+#df_concat.to_csv(f'C:/Users/Varad/Programming/Magalu/arcadeteste/romaneios/romaneios geral.csv', index=False)
 
+df_novo.to_csv(f'{caminho}/prioridades {data_hoje}.csv')
 df_novo = df_novo.sort_values(["Valor Total"], ascending=False)
 
 df_novo['Valor Total'] = df_novo['Valor Total'].apply(lambda x: f'R${x:,.2f}')
