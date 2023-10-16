@@ -12,7 +12,6 @@ st.set_page_config(layout="wide")
 data_hoje = datetime.today().strftime('%d.%m')
 
 df = pd.read_csv('/romaneios/romaneios geral.csv',low_memory=False, sep=',', index_col=False)
-df.head()   
 
 df["Nro. Entrega"] = df["Nro. Entrega"].astype(object)
 df = df.drop_duplicates(subset=['Nro. Entrega'])
