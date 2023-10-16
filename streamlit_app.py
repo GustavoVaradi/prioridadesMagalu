@@ -2,7 +2,6 @@ import pandas as pd
 import streamlit as st
 from datetime import datetime
 #import plotly.express as px
-caminho = 'C:/Users/Varad/Programming/Magalu/arcadeteste/romaneios'
 
 def transform_string(s):
     changed = s.replace('R$', '').replace('.','').replace(',','.')
@@ -12,7 +11,7 @@ st.set_page_config(layout="wide")
 
 data_hoje = datetime.today().strftime('%d.%m')
 
-df = pd.read_csv('C:/Users/Varad/Programming/Magalu/arcadeteste/romaneios/romaneios geral.csv',low_memory=False, sep=',', index_col=False)
+df = pd.read_csv('/romaneios/romaneios geral.csv',low_memory=False, sep=',', index_col=False)
 df.head()   
 
 df["Nro. Entrega"] = df["Nro. Entrega"].astype(object)
