@@ -59,7 +59,6 @@ unidade = st.sidebar.selectbox("Base", df_novo['Unidade'].unique())
 
 df_novo = df_novo[df_novo['Status']== status]
 df_novo = df_novo[df_novo['Unidade'] == unidade]
-df_novo
 
 
 #adicionar ultimo motorista
