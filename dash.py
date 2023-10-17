@@ -17,7 +17,7 @@ df["Nro. Entrega"] = df["Nro. Entrega"].astype(object)
 df = df.drop_duplicates(subset=['Nro. Entrega'])
 df['Numero End. Pessoa Visita'] = df['Numero End. Pessoa Visita'].astype(object)
 df['Valor Total'] = df['Valor Total'].apply(transform_string)
-endereco = df['Logradouro Pessoa Visita'] + ' - nº ' +df['Numero End. Pessoa Visita'].astype(str)
+endereco = df['Logradouro Pessoa Visita'] + ' - nº ' + df['Numero End. Pessoa Visita'].astype(str)
 
 unidades_atuais = ['HGRU', 'HVGI', 'HABC', 'OSA']
 df = df[df['Sigla Unidade Atual'].isin(unidades_atuais)]
@@ -59,6 +59,6 @@ unidade = st.sidebar.selectbox("Base", df_novo['Unidade'].unique())
 
 df_novo = df_novo[df_novo['Status']== status]
 df_novo = df_novo[df_novo['Unidade'] == unidade]
-
+df_novo
 
 #adicionar ultimo motorista
