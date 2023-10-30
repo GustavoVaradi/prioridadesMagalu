@@ -8,3 +8,6 @@ df_romaneios = pd.read_csv(f'{caminho}/romaneios.csv', low_memory=False, sep=';'
 df_carga = pd.read_csv(f'{caminho}/carga.csv', low_memory=False, sep=';',  encoding="ISO-8859-1", index_col=False)
 df_concat = pd.concat([df_romaneios, df_carga], ignore_index=True)
 df_concat.to_csv(f'C:/Users/Varad/Programming/Magalu/arcadeteste/romaneios/romaneios geral.csv', index=False)
+
+# fazer um while com time 
+# cad 5 minutos fazer a mesma função
