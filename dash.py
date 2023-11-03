@@ -1,20 +1,8 @@
 import pandas as pd
 import streamlit as st
 from datetime import datetime
+
 #import plotly.express as px
-
-def uniao_romaneio():
-    data_hoje = datetime.today().strftime('%d.%m')
-    print(data_hoje)
-    caminho = 'C:/Users/Varad/Programming/Magalu/arcadeteste/romaneios'
-
-    df_romaneios = pd.read_csv(f'{caminho}/romaneios.csv', low_memory=False, sep=';',  encoding="ISO-8859-1", index_col=False)
-    df_carga = pd.read_csv(f'{caminho}/carga.csv', low_memory=False, sep=';',  encoding="ISO-8859-1", index_col=False)
-    df_concat = pd.concat([df_romaneios, df_carga], ignore_index=True)
-    df_concat.to_csv(f'C:/Users/Varad/Programming/Magalu/arcadeteste/romaneios/romaneios geral.csv', index=False)    
-
-
-uniao_romaneio()
 
 def transform_string(s):
     changed = s.replace('R$', '').replace('.','').replace(',','.')
@@ -30,7 +18,7 @@ df["Nro. Entrega"] = df["Nro. Entrega"].astype(object)
 df = df.drop_duplicates(subset=['Nro. Entrega'])
 df['Numero End. Pessoa Visita'] = df['Numero End. Pessoa Visita'].astype(object)
 df['Valor Total'] = df['Valor Total'].apply(transform_string)
-endereco = df['Logradouro Pessoa Visita'] + ' - nº ' + df['Numero End. Pessoa Visita'].astype(str)
+endereco = df['Logradouro Pessoa Visita'] + ' - nº ' +df['Numero End. Pessoa Visita'].astype(str)
 
 unidades_atuais = ['HGRU', 'HVGI', 'HABC', 'OSA']
 df = df[df['Sigla Unidade Atual'].isin(unidades_atuais)]
@@ -73,5 +61,6 @@ unidade = st.sidebar.selectbox("Base", df_novo['Unidade'].unique())
 df_novo = df_novo[df_novo['Status']== status]
 df_novo = df_novo[df_novo['Unidade'] == unidade]
 df_novo
+
 
 #adicionar ultimo motorista
