@@ -11,4 +11,4 @@ df_concat.to_csv(f'C:/Users/Varad/Programming/Magalu/arcadeteste/romaneios/roman
 
 # fazer um while com time 
 # cad 5 minutos fazer a mesma função
-    
+        
